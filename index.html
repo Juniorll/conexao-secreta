@@ -900,13 +900,13 @@
         // ===== CONFIGURAÇÃO DO FIREBASE =====
         // COLE A CONFIGURAÇÃO DO SEU PROJETO AQUI
         const firebaseConfig = {
-  apiKey: "AIzaSyDnqK4Hx-Y_Hr9_Cc5oKD9g6RTZSe-eBTA",
-  authDomain: "conexao-secreta.firebaseapp.com",
-  projectId: "conexao-secreta",
-  storageBucket: "conexao-secreta.firebasestorage.app",
-  messagingSenderId: "156846006416",
-  appId: "1:156846006416:web:9e87f70a3afe9e8264b815",
-  measurementId: "G-G4KFHMMCTJ"
+            apiKey: "AIzaSyDnqK4Hx-Y_Hr9_Cc5oKD9g6RTZSe-eBTA",
+            authDomain: "conexao-secreta.firebaseapp.com",
+            projectId: "conexao-secreta",
+            storageBucket: "conexao-secreta.firebasestorage.app",
+            messagingSenderId: "156846006416",
+            appId: "1:156846006416:web:9e87f70a3afe9e8264b815",
+            measurementId: "G-G4KFHMMCTJ"
         };
         // ===================================
 
@@ -998,6 +998,7 @@
                     currentTurmaId = null;
                     adminUnlocked = false;
                     cleanupListeners(); // Limpa listeners antigos
+                    el('loading-spinner').classList.add('hidden'); // <-- CORREÇÃO DO BUG
                     showView('login-view');
                 }
             });
