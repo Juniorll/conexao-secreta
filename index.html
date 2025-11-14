@@ -197,7 +197,7 @@
                             <span id="nav-turma-name" class="ml-4 text-sm font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full"></span>
                         </div>
                         <div class="flex items-center space-x-4">
-                            <button id="nav-admin-btn" class="hidden items-center px-3 py-2 border border-yellow-400 rounded-md text-sm font-medium text-yellow-700 bg-yellow-100 hover:bg-yellow-200" onclick="showView('admin-view')">
+                            <button id="nav-admin-btn" class="items-center px-3 py-2 border border-yellow-400 rounded-md text-sm font-medium text-yellow-700 bg-yellow-100 hover:bg-yellow-200" onclick="showView('admin-view')">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m12 0a2 2 0 100-4m0 4a2 2 0 110-4M6 20v-2a2 2 0 114 0v2H6zm12 0v-2a2 2 0 114 0v2h-4z"></path></svg>
                                 Admin
                             </button>
@@ -1025,11 +1025,14 @@
                 el('dashboard-user-name').textContent = currentUserData.nome.split(' ')[0];
                 
                 // Mostrar botão de admin se for admin
+                // REMOVIDO: O botão agora é sempre visível, protegido por senha.
+                /*
                 if (currentUserData.isAdmin) {
                     el('nav-admin-btn').classList.remove('hidden');
                 } else {
                     el('nav-admin-btn').classList.add('hidden');
                 }
+                */
 
                 // Verifica se o perfil está completo
                 if (!currentUserData.perfil || !currentUserData.perfil.q1 || !currentUserData.perfil.avatar) {
