@@ -942,14 +942,18 @@
             // Alternar abas
             el('tab-login').addEventListener('click', () => {
                 el('tab-login').classList.add('text-blue-600', 'border-blue-600');
+                el('tab-login').classList.remove('text-gray-500'); // <--- ADICIONADO
                 el('tab-register').classList.remove('text-blue-600', 'border-blue-600');
+                el('tab-register').classList.add('text-gray-500'); // <--- ADICIONADO
                 el('login-form').classList.remove('hidden');
                 el('register-form').classList.add('hidden');
                 showAuthError('');
             });
             el('tab-register').addEventListener('click', () => {
                 el('tab-register').classList.add('text-blue-600', 'border-blue-600');
+                el('tab-register').classList.remove('text-gray-500'); // <--- ADICIONADO
                 el('tab-login').classList.remove('text-blue-600', 'border-blue-600');
+                el('tab-login').classList.add('text-gray-500'); // <--- ADICIONADO
                 el('register-form').classList.remove('hidden');
                 el('login-form').classList.add('hidden');
                 showAuthError('');
