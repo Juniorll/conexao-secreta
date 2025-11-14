@@ -597,6 +597,14 @@
                             <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🤖">🤖</button>
                             <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🧠">🧠</button>
                         </div>
+                        <div class="flex justify-center space-x-2 mt-2"> <!-- Nova linha de emojis -->
+                            <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🎓">🎓</button>
+                            <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="💻">💻</button>
+                            <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🎮">🎮</button>
+                            <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🎨">🎨</button>
+                            <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🧪">🧪</button>
+                            <button type="button" class="profile-avatar-btn text-3xl p-2 rounded-lg" data-emoji="🦉">🦉</button>
+                        </div>
                         <input type="hidden" id="profile-avatar" value="👤">
                     </div>
 
@@ -1671,6 +1679,9 @@
                             <button title="Adorei!" class="reaction-btn p-2 rounded-full ${gift.reactions.includes(`❤️:${currentUser.uid}`) ? 'bg-gray-300' : 'hover:bg-gray-200'} transition-colors" data-reaction="❤️" data-gift-id="${gift.id}" data-author-id="${gift.fromId}">❤️</button>
                             <button title="Engraçado!" class="reaction-btn p-2 rounded-full ${gift.reactions.includes(`😂:${currentUser.uid}`) ? 'bg-gray-300' : 'hover:bg-gray-200'} transition-colors" data-reaction="😂" data-gift-id="${gift.id}" data-author-id="${gift.fromId}">😂</button>
                             <button title="Interessante!" class="reaction-btn p-2 rounded-full ${gift.reactions.includes(`💡:${currentUser.uid}`) ? 'bg-gray-300' : 'hover:bg-gray-200'} transition-colors" data-reaction="💡" data-gift-id="${gift.id}" data-author-id="${gift.fromId}">💡</button>
+                            <button title="Gostei!" class="reaction-btn p-2 rounded-full ${gift.reactions.includes(`👍:${currentUser.uid}`) ? 'bg-gray-300' : 'hover:bg-gray-200'} transition-colors" data-reaction="👍" data-gift-id="${gift.id}" data-author-id="${gift.fromId}">👍</button>
+                            <button title="Genial!" class="reaction-btn p-2 rounded-full ${gift.reactions.includes(`👏:${currentUser.uid}`) ? 'bg-gray-300' : 'hover:bg-gray-200'} transition-colors" data-reaction="👏" data-gift-id="${gift.id}" data-author-id="${gift.fromId}">👏</button>
+                            <button title="Uau!" class="reaction-btn p-2 rounded-full ${gift.reactions.includes(`😮:${currentUser.uid}`) ? 'bg-gray-300' : 'hover:bg-gray-200'} transition-colors" data-reaction="😮" data-gift-id="${gift.id}" data-author-id="${gift.fromId}">😮</button>
                         </div>
                     </div>
                 `;
@@ -1707,7 +1718,7 @@
                     // Remover reação
                     batch.update(giftRef, { reactions: arrayRemove(reactionId) });
                     // Decrementar estatística do autor (apenas se for positiva)
-                    if (['🙏', '❤️', '💡'].includes(reaction)) {
+                    if (['🙏', '❤️', '💡', '👍', '👏', '😮'].includes(reaction)) {
                         await runTransaction(db, async(t) => {
                             const authorDoc = await t.get(authorRef);
                             const currentStats = authorDoc.data().stats;
@@ -1719,7 +1730,7 @@
                     // Adicionar reação
                     batch.update(giftRef, { reactions: arrayUnion(reactionId) });
                     // Incrementar estatística do autor (apenas se for positiva)
-                    if (['🙏', '❤️', '💡'].includes(reaction)) {
+                    if (['🙏', '❤️', '💡', '👍', '👏', '😮'].includes(reaction)) {
                         await runTransaction(db, async(t) => {
                             const authorDoc = await t.get(authorRef);
                             const currentStats = authorDoc.data().stats;
