@@ -1119,7 +1119,11 @@
                 el('login-error').textContent = '';
                 try {
                     await signInWithEmailAndPassword(auth, email, password);
-                    // Sucesso, o onAuthStateChanged vai cuidar do resto
+                    // Sucesso! Esconde o login e mostra o loading
+                    // enquanto o onAuthStateChanged carrega os dados.
+                    el('loading-spinner').classList.remove('hidden');
+                    showView('loading-spinner');
+                    // O onAuthStateChanged vai cuidar do resto
                 } catch (error) {
                     console.error("Erro de login:", error.code);
                     el('login-error').textContent = getFirebaseAuthErrorMessage(error.code);
